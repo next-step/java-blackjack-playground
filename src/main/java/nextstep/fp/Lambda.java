@@ -18,12 +18,14 @@ public class Lambda {
     }
 
     public static void runThread() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("Hello from thread");
-            }
-        }).start();
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                System.out.println("Hello from thread");
+//            }
+//        }).start();
+        // 추상메서드(abstract method) 가 한개인 Runnable 인터페이스를 파라미터로 받아 생성하는 Thread를 람다식으로 변경
+        new Thread(() -> System.out.println("Hello from thread"));
     }
 
     public static int sumAll(List<Integer> numbers) {
