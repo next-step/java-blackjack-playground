@@ -8,13 +8,18 @@ public class CarTest {
     @Test
     public void 이동() {
         Car car = new Car("pobi", 0);
-        Car actual = car.move(new MoveStrategy() {
-            @Override
-            public boolean isMovable() {
-                return true;
-            }
+//        Car actual = car.move(new MoveStrategy() {
+//            @Override
+//            public boolean isMovable() {
+//                return true;
+//            }
+//        });
+
+        Car lambdaCar = car.move(() ->{
+            return true;
         });
-        assertThat(actual).isEqualTo(new Car("pobi", 1));
+
+        assertThat(lambdaCar).isEqualTo(new Car("pobi", 1));
     }
 
     @Test
@@ -26,6 +31,9 @@ public class CarTest {
                 return false;
             }
         });
-        assertThat(actual).isEqualTo(new Car("pobi", 0));
+
+        Car lambdaCar = car.move(() -> {return false;});
+
+        assertThat(lambdaCar).isEqualTo(new Car("pobi", 0));
     }
 }
