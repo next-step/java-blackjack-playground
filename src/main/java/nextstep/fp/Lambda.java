@@ -1,8 +1,10 @@
 package nextstep.fp;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class Lambda {
+public class Lambda implements Conditional{
     public static void printAllOld(List<Integer> numbers) {
         System.out.println("printAllOld");
 
@@ -28,15 +30,16 @@ public class Lambda {
         new Thread(() -> System.out.println("Hello from thread"));
     }
 
-    public static int sumAll(List<Integer> numbers) {
+    public static int sumAll(List<Integer> numbers,Conditional conditional) {
         int total = 0;
         for (int number : numbers) {
             total += number;
         }
+
         return total;
     }
 
-    public static int sumAllEven(List<Integer> numbers) {
+    public static int sumAllEven(List<Integer> numbers,Conditional conditional) {
         int total = 0;
         for (int number : numbers) {
             if (number % 2 == 0) {
@@ -46,13 +49,19 @@ public class Lambda {
         return total;
     }
 
-    public static int sumAllOverThree(List<Integer> numbers) {
+    public static int sumAllOverThree(List<Integer> numbers, Conditional conditional) {
         int total = 0;
         for (int number : numbers) {
             if (number > 3) {
                 total += number;
             }
         }
+
         return total;
+    }
+
+    @Override
+    public boolean test(Integer number) {
+        return false;
     }
 }
