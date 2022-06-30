@@ -1,6 +1,6 @@
 package nextstep.fp;
 
+@FunctionalInterface
 public interface Conditional {
-
-    boolean test(Integer number);
+    abstract boolean test(Integer number);
 }
