@@ -1,19 +1,22 @@
-apply plugin: 'java'
-apply plugin: 'eclipse'
-
-group = 'camp.nextstep'
-version = '1.0.0'
-sourceCompatibility = '1.8'
+plugins {
+    id 'java'
+}
 
 repositories {
-	mavenCentral()
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
-    testImplementation "org.junit.jupiter:junit-jupiter:5.7.2"
-    testImplementation "org.assertj:assertj-core:3.19.0"
+    implementation 'com.github.woowacourse-projects:mission-utils:1.0.0'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
 }
 
 test {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
